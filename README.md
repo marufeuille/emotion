@@ -14,11 +14,50 @@ To analyze your face(photo) and send to Aliyun LogService in Realtime.
   - docker
   - docker-compose
 
-### Quickly use
+#### Alibaba Cloud
+- Activate LogService
+- And Create LogProject and LogStore
+- Create RAM Account(Optional, but strongly recommended)
+- Create AccessKeyId and AccessKeySecret
 
-### Environment Varialble
-|Variable Name|Value to Set|
-|:-----------|:-----------|
-|FILE_DIR|Path to save Picture|
-|MQ_HOST|Rabbit MQ's IP Addr or Hostname|
-|QUEUE_NAME|Rabbit MQ's Queue Name|
+### Quickly use
+clone this repo.
+
+```bash
+git clone https://github.com/marufeuille/emotion
+```
+
+copy docker-compose-sample.yml to docker-compose.yml
+
+```bash
+cp docker-compose-sample.yml docker-compose.yml
+```
+and edit enviroment variable
+
+```
+      ALIYUN_ACCESSKEYID: "YOUR_ACCESSKEY_ID"
+      ALIYUN_ACCESSKEYSECRET: "YOUR_SECRETKEY_ID"
+      LOG_PROJECT: "YOUR_LOGPROJECT_NAME"
+      LOG_LOGSTORE: "YOUR_LOGSTORE_NAME"
+      LOG_TOPICS: "YOUR_TOPICS_NAME"
+```
+
+build image
+
+```bash
+docker-compose build
+```
+
+and run containers
+
+```bash
+docker-compose up
+```
+
+this is the way to start Analysis and send to LogService enviroment.
+Complete this procedure, to run command bellow
+
+```bash
+cd cheese
+bash index.py
+```
