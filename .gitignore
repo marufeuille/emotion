@@ -5,3 +5,5 @@ pic/*
 env/
 env/*
 .env
+cheese/myvenv
+classifier/.env
