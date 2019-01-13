@@ -1,0 +1,36 @@
+version: "3.4"
+
+services:
+  mq:
+    image: rabbitmq:3
+    #build: "./mq"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  classifier:
+    depends_on:
+      - mq
+    build: "./classifier"
+    volumes:
+      - "./pic:/data"
+    environment:
+      MQ_HOST: mq
+    links:
+      - mq
+    restart: on-failure
+
+  sender:
+    depends_on:
+      - mq
+    build: "./sender"
+    environment:
+      MQ_HOST: mq
+      ALIYUN_ACCESSKEYID: "YOUR_ACCESSKEY_ID"
+      ALIYUN_ACCESSKEYSECRET: "YOUR_SECRETKEY_ID"
+      LOG_PROJECT: "YOUR_LOGPROJECT_NAME"
+      LOG_LOGSTORE: "YOUR_LOGSTORE_NAME"
+      LOG_TOPICS: "YOUR_TOPICS_NAME"
+    links:
+      - mq
+    restart: on-failure
