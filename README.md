@@ -54,10 +54,14 @@ and run containers
 docker-compose up
 ```
 
-this is the way to start Analysis and send to LogService enviroment.
+Congraturations!
+Your Analysis and Send to LogService Enviroment is running.
+
+Next setup take a photo regulary.
+
 Complete this procedure, to run command bellow
 
 ```bash
 cd cheese
-bash index.py
+bash index.sh
 ```

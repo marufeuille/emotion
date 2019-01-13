@@ -5,8 +5,8 @@ from datetime import datetime
 import os
 import sys
 
-MQ_HOST = os.environ['MQ_HOST']
-QUEUE_NAME = os.environ['QUEUE_NAME']
+MQ_HOST = "localhost" if os.environ.get('MQ_HOST') is None else os.environ.gey('MQ_HOST')
+QUEUE_NAME = "PRE" if os.environ.get('QUEUE_NAME') is None else os.environ.get('QUEUE_NAME')
 
 def send_to_mq(filename):
   connection = pika.BlockingConnection(pika.ConnectionParameters(host=MQ_HOST))

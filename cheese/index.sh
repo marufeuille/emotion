@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PREFIX=${FILEDIR:-$(pwd)/pic}
+PREFIX=${FILEDIR:-../pic}
 
 if [ ! -d ${PREFIX} ]; then
   mkdir -p ${PREFIX}
